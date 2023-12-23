@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    body{
+        /*background-color: gray;*/
+    }
+    .root{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    .container{
+        border: black solid 1px;
+        max-width: 600px;
+        /*max-height: 600px;*/
+
+    }
+    .divAddress{
+        background-color: lightgray;
+        margin-bottom: 10px;
+    }
+
+    /*{*/
+    /*"albumId": 1,*/
+    /*"id": 1,*/
+    /*"title": "accusamus beatae ad facilis cum similique qui sunt",*/
+    /*"url": "https://via.placeholder.com/600/92c952",*/
+    /*"thumbnailUrl": "https://via.placeholder.com/150/92c952"*/
+    /*}
+
+
+</style>
+<body>
+
+<div id="root" class="root">
+</div>
+<script>
+const root = document.getElementById('root')
+
+
+const requestUrl = 'https://jsonplaceholder.typicode.com/albums/1/photos'
+const requestUrl1 = 'https://jsonplaceholder.typicode.com/photos'
+
+function textSlice(text) {
+    return text.slice(1).slice(0, -1)
+}
+
+
+
+
+function createDiv(json){
+    const div = document.createElement('div')
+    const img = document.createElement('img')
+    const title = document.createElement('p')
+    img.src = textSlice(JSON.stringify(json.url))
+    div.classList.add('container')
+    title.innerText = textSlice(JSON.stringify(json.title))
+
+    div.append(img)
+    div.append(title)
+
+    root.append(div)
+}
+
+function request(url) {
+    return fetch(url).then(response => response.json()).then(json => {
+        json.map(elem => createDiv(elem))
+    })
+}
+
+
+
+request(requestUrl1)
+
+
+    // fetch('https://jsonplaceholder.typicode.com/users?limit')
+    //     .then(response => response.json())
+    //     .then(json => console.log(json))
+    //
+
+
+
+
+
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    body{
+        background-color: gray;
+    }
+    .item{
+background-color: red;
+    }
+
+
+</style>
+<body>
+
+<div id="root">
+    <input type="text" id="input">
+    <button id ="btn">кнопка</button>
+</div>
+
+
+<script>
+const root = document.getElementById('root')
+const input = document.getElementById('input')
+const button = document.getElementById('btn')
+
+const list = [{text: 'do1', complete: false},
+    {text: 'do2', complete: false},
+    {text: 'do3', complete: false},
+    {text: 'do4', complete: false}]
+
+const arr2 = JSON.parse(localStorage.getItem('startList')) || list
+
+list.forEach(() => localStorage.setItem('startList', JSON.stringify(list)))
+
+
+const createElement = (text,complete) =>{
+    const div = document.createElement('div')
+    const p = document.createElement('p')
+    const input = document.createElement('input')
+    p.innerText = text
+    div.classList.add('item')
+    input.setAttribute('type', 'checkbox')
+    input.checked  = complete
+    div.append(p)
+    div.append(input)
+    root.append(div)
+
+}
+
+const createTodo = (arr) => {
+    arr.forEach((elem) => createElement(elem.text, elem.complete))
+}
+
+
+
+
+createTodo(arr2)
+
+
+
+
+
+const addToDo =  () => {
+    const inputValue = input.value
+    console.log(inputValue)
+    list.push({text: inputValue, complete: false})
+    list.forEach(() => localStorage.setItem('startList', JSON.stringify(list)))
+    console.log(list)
+    createElement(inputValue, false)
+
+
+}
+
+button.addEventListener('click', addToDo)
+
+
+
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    body{
+        background-color: gray;
+    }
+    .item{
+background-color: red;
+    }
+
+
+</style>
+<body>
+
+<div id="root">
+
+</div>
+
+<button id="startb" >start</button>
+<button id="stopb">stop</button>
+
+<script>
+const root = document.getElementById('root')
+const startb = document.getElementById('start')
+const stopb = document.getElementById('stop')
+
+
+
+ // const getDate = () =>  {
+ //    const date = new Date()
+ //    const hours = date.getHours()
+ //     const min = date.getMinutes()
+ //     const sec = date.getSeconds()
+ //     console.log(`${hours} : ${min} : ${sec}`)
+ //     root.innerText = `${hours} : ${min} : ${sec}`
+ // }
+ //
+
+
+
+
+let start = 0;
+
+
+
+
+
+
+startb.addEventListener('click', () => setInterval(() => {root.innerText = start; start += 1}, 1000))
+
+
+
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
